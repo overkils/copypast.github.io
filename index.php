@@ -365,7 +365,7 @@
                 <div class="tutorial__subtitle applications__subtitle">
                     <p>Залишилися питання - задайте їх через форму нижче</p>
                 </div>
-                <form action="index.html" method="POST" class="tutorial__form">
+                <form action="index.php" method="POST" class="tutorial__form">
                     <input type="text" name="name" class="tutorial__input" placeholder="Ваше Ім’я" required>
                     <input type="tel" name="tel" class="tutorial__input" placeholder="Номер телефону" required>
                     <button name="submit" class="btn tutorial__btn">Отримати пропозицію</button>
@@ -390,6 +390,28 @@
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/slick.min.js"></script>
     <script src="js/main.js"></script>
-    
+    <?php 
+    // if(!isset($_POST['name']) and !isset($_POST['tel']));
+
+
+    $name = $_POST['name'];
+    $tel = $_POST['tel'];
+    // $name = htmlspecialchars($name);
+    // $tel = htmlspecialchars($tel);
+    // $name = urldecode($name);
+    // $tel = urldecode($tel);
+    // $name = trim($name);
+    // $tel = trim($tel);    
+$to  = "tarasevich.daniils@gmail.com" ; 
+
+$subject = "Данные клиента"; 
+
+$message = 'Имя пользователя: '.$name ."\r\nТелефон пользователя: ".$tel;
+
+$headers  = "Content-type: text/html; charset=windows-1251 \r\n"; 
+$headers .= "From: От кого письмо tarasevich.daniils@gmail.com\r\n"; 
+$headers .= "Reply-To: tarasevich.daniils@gmail.com\r\n"; 
+mail($to, $subject, $message, $headers)
+?>
 </body>
 </html>
